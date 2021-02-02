@@ -3,7 +3,7 @@
 
 # -----------------------------------------------------------
 # created 02.02.2021
-# Thomas Kaulke, kaulkth@gmail.com
+# Thomas Kaulke, kaulketh@gmail.com
 # https://github.com/kaulketh
 # -----------------------------------------------------------
 
