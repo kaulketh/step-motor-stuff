@@ -1,4 +1,4 @@
-### Raspberry Pi and stepper
+### Raspberry Pi and stepper motor
 
-#### [Step motor 28BYJ-48](https://github.com/kaulketh/step-motor-stuff/tree/master/SM_28BYJ48)
-* to use with Raspberry Pi and driver device ULN2003A
+#### [Stepper motor 28BYJ-48](https://github.com/kaulketh/step-motor-stuff/tree/master/SM_28BYJ48)
+* to use with Darlington transistor array [ULN2003A](https://en.wikipedia.org/wiki/ULN2003A)
