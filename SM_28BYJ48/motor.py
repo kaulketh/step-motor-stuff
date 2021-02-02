@@ -23,10 +23,9 @@ GPIO.setmode(GPIO.BCM)
 
 class SM28BYJ48:
     """
-    Der Schrittmotoren 28BYJ-48 ist so aufgebaut, dass der Motor 8 Schritte für
-    eine Umdrehung benötigt. Durch die Getriebeübersetzung benötigt er aber
-    512 x 8 Schritte, damit die Achse sich einmal um sich selbst
-    also 360° dreht.
+    The stepper motor 28BYJ-48 is designed in such a way that the motor needs
+    8 steps for one revolution. Due to the gear ratio it requires 512 x 8 steps
+    so that the axis rotates through 360°.
     """
 
     def __init__(self, in1: int, in2: int, in3: int, in4: int,
@@ -47,7 +46,7 @@ class SM28BYJ48:
         self.__in3 = in3
         self.__in4 = in4
         self.__sa = 5.625 / 64  # step angle
-        self.__spr = 512  # steps per round
+        self.__spr = 512  # steps per one revolution
         self.__logger = LOGGER
         self.__logger.debug(
             f"Initialize instance of "
