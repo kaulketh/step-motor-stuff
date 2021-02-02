@@ -15,13 +15,10 @@ from SM_28BYJ48 import SM28BYJ48
 __author__ = "Thomas Kaulke"
 __email__ = "kaulketh@gmail.com"
 
-if __name__ == '__main__':
+
+def test1():
     motor = SM28BYJ48(6, 13, 19, 26)
-    # motor.step(-512)
-    # sleep(3)
-    # motor.step(512)
-    # sleep(3)
-    #
+
     motor.rotate(360)
     sleep(3)
     motor.rotate(-360)
@@ -35,3 +32,7 @@ if __name__ == '__main__':
     #     for _ in range(0, 8):
     #         motor.rotate(45)
     #         sleep(3)
+
+
+if __name__ == '__main__':
+    test1()

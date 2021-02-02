@@ -47,15 +47,15 @@ class SM28BYJ48:
         self.__in4 = in4
         self.__sa = 5.625 / 64  # step angle
         self.__spr = 512  # steps per one revolution
+        self.__repr_str = f"{self.__class__.__name__}: " \
+                          f"IN1={self.__in1}, " \
+                          f"IN2={self.__in2}, " \
+                          f"IN3={self.__in3}, " \
+                          f"IN4={self.__in4}, " \
+                          f"Delay={self.__delay}"
         self.__logger = LOGGER
         self.__logger.debug(
-            f"Initialize instance of "
-            f"{self.__class__.__name__}, "
-            f"IN1={self.__in1}, "
-            f"IN2={self.__in2}, "
-            f"IN3={self.__in3}, "
-            f"IN4={self.__in4}, "
-            f"Delay={self.__delay}")
+            f"Initialize instance of {self.__class__.__name__}")
 
         GPIO.setup(self.__in1, GPIO.OUT)
         GPIO.setup(self.__in2, GPIO.OUT)
@@ -66,6 +66,12 @@ class SM28BYJ48:
         GPIO.output(self.__in2, False)
         GPIO.output(self.__in3, False)
         GPIO.output(self.__in4, False)
+
+    def __repr__(self):
+        return self.__repr_str
+
+    def __str__(self):
+        return self.__repr_str
 
     def __step_1(self):
         GPIO.output(self.__in4, True)
@@ -115,10 +121,6 @@ class SM28BYJ48:
         GPIO.output(self.__in4, False)
         GPIO.output(self.__in1, False)
 
-    def reset(self):
-        self.__logger.info(f"Step motor reset, GPIO cleanup")
-        GPIO.cleanup()
-
     def __clockwise(self, steps):
         self.__logger.debug(f"{steps} steps clockwise")
         for _ in range(steps):
@@ -142,6 +144,10 @@ class SM28BYJ48:
             self.__step_3()
             self.__step_2()
             self.__step_1()
+
+    def reset(self):
+        self.__logger.info(f"Step motor reset, GPIO cleanup")
+        GPIO.cleanup()
 
     def step(self, steps: int = 1):
         self.__logger.info(f"Rotate {steps} steps.")
