@@ -19,11 +19,13 @@ __email__ = "kaulketh@gmail.com"
 def test1():
     motor = SM28BYJ48(6, 13, 19, 26)
 
-    motor.rotate(360)
-    sleep(3)
     motor.rotate(-360)
     sleep(3)
-    motor.rotate(720)
+    motor.rotate(-90)
+    sleep(3)
+    motor.rotate(-180)
+    sleep(3)
+    motor.rotate(-720)
     # while True:
     #
     #     for _ in range(0, 4):
