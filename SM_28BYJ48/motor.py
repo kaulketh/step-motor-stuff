@@ -17,8 +17,8 @@ import RPi.GPIO as GPIO
 
 from .logger import LOGGER
 
-GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
 
 class SM28BYJ48:
@@ -55,7 +55,7 @@ class SM28BYJ48:
                           f"Delay={self.__delay}"
         self.__logger = LOGGER
         self.__logger.debug(
-            f"Initialize instance of {self.__class__.__name__}")
+            f"Initialize instance of {self.__repr_str}")
 
         GPIO.setup(self.__in1, GPIO.OUT)
         GPIO.setup(self.__in2, GPIO.OUT)
@@ -145,17 +145,21 @@ class SM28BYJ48:
             self.__step_2()
             self.__step_1()
 
+    @property
+    def logger(self):
+        return self.__logger
+
     def reset(self):
-        self.__logger.info(f"Step motor reset, GPIO cleanup")
+        self.__logger.debug(f"Stepper motor reset, GPIO cleanup")
         GPIO.cleanup()
 
     def step(self, steps: int = 1):
-        self.__logger.info(f"Rotate {steps} steps.")
+        self.__logger.debug(f"Take {steps} steps.")
         self.__counter_clockwise(steps * -1) \
             if steps < 0 else self.__clockwise(steps)
 
     def rotate(self, degrees):
-        self.__logger.info(f"Rotate {degrees} degrees.")
+        self.__logger.debug(f"Rotate {degrees} degrees.")
         self.step(int(degrees / 5.625 / 64 * 512))
 
 
